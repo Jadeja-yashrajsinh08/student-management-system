@@ -1,0 +1,49 @@
+<div class="header">Student Dashboard</div>
+
+<div class="container">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- Search -->
+    <div class="search-box">
+        <form action="/search" method="GET">
+            <input type="text" name="query" placeholder="Search by name or ID">
+            <button class="btn btn-search">Search</button>
+            <a href="/" class="btn btn-add">Reset</a>
+        </form>
+    </div>
+
+    <!-- Add Button -->
+    <div style="margin-bottom:15px;">
+        <a href="/add" class="btn btn-add">➕ Add Student</a>
+    </div>
+
+    <!-- Table -->
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Course</th>
+            <th>Total</th>
+            <th>%</th>
+            <th>Action</th>
+        </tr>
+
+        {% for s in students %}
+        <tr>
+            <td>{{s[0]}}</td>
+            <td>{{s[1]}}</td>
+            <td>{{s[3]}}</td>
+            <td>{{s[7]}}</td>
+            <td>{{ "%.2f"|format(s[8]) }}</td>
+            <td>
+                <a href="/edit/{{s[0]}}" class="btn btn-edit">Edit</a>
+                <a href="/delete/{{s[0]}}" class="btn btn-delete">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+<div style="text-align:right; margin:10px;">
+    Welcome <b>{{user}}</b>
+    <a href="/logout" class="btn btn-delete">Logout</a>
+
+</div>
+</div>
