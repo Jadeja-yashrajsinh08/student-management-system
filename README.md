@@ -22,7 +22,7 @@ I also implemented a login system so that only authorized users can access the d
 * Delete students
 * Search functionality
 * Automatic calculation of total and percentage
-* Pagination for better data handling
+
 
 ---
 
